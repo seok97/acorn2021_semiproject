@@ -16,3 +16,7 @@ nav{
 nav div.container{
 	justify-content: center;
 }
+
+header .nav_wrapper{
+	display: flex;
+}
