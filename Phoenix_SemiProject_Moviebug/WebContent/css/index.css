@@ -1,3 +1,14 @@
 body{
 	
 }
+
+.index_movielist .card{
+	width: 240px;
+	height: 292px;
+	border: none;
+}
+
+.index_carousel .carousel-item-next.active{
+	flex-direction: row;
+	display: flex;
+}
