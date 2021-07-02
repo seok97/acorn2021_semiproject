@@ -1,5 +1,10 @@
+<%@page import="test.movie.movieDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%
+	movieDto dto = new movieDto();
+	
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -44,6 +49,7 @@ pageEncoding="UTF-8"%>
           })
           .then((data) => {
             console.log(data.movieListResult.movieList[0].movieNmEn)
+            
             retitle.innerText = data.movieListResult.movieList[0].movieNm
             retitle_en.innerText = data.movieListResult.movieList[0].movieNmEn
             redirec.innerText =
