@@ -14,9 +14,17 @@ nav{
 }
 
 nav div.container{
-	justify-content: center;
+	
 }
 
-header .nav_wrapper{
+nav .nav_wrapper,.nav_w_right,.nav_user{
 	display: flex;
+}
+
+nav .nav_wrapper{
+	justify-content: space-between;
+}
+
+nav .nav_w_right{
+	justify-content: center;
 }

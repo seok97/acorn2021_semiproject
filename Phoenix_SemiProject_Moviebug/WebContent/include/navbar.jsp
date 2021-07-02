@@ -15,7 +15,10 @@ pageEncoding="UTF-8"%>
           
           <div class="nav_w_right">
             <div class="nav_search">
-            	검색바
+            	<form action="<%=request.getContextPath() %>/more.jsp">
+            		<input type="text" id="keyword" name="keyword" />
+            		<button type="submit">검색</button>
+            	</form>
             </div>
             <div class="nav_user">
               <div class="nav_login">로그인/회원가입</div>
