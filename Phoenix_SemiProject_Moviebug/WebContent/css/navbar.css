@@ -1,0 +1,18 @@
+.header_navwrpper{
+	padding: 0;
+}
+
+@media (min-width: 1080px) {
+	.header_navwrpper {
+	    width: 1032px;
+	    margin: 0px auto;
+	}
+}
+
+nav{
+	height: 65px; 
+}
+
+nav div.container{
+	justify-content: center;
+}
