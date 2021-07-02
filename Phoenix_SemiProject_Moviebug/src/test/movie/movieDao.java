@@ -2,6 +2,9 @@ package test.movie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import test.util.DbcpBean;
 
@@ -90,6 +93,44 @@ public class movieDao {
 		} else {
 			return false;
 		}
+	}
+	
+	
+	
+	public List<movieDto> getList(movieDto dto){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<movieDto> list = new ArrayList<>();
+		try {
+			conn = new DbcpBean().getConn();
+			// 실행할 sql 문 작성
+
+			String sql = "";
+			pstmt = conn.prepareStatement(sql);
+			// 바인딩
+
+			 rs = pstmt.executeQuery();
+			 
+			 while(rs.next()) {
+				 
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+		
 	}
 	
 }

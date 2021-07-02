@@ -49,6 +49,7 @@ CREATE TABLE movie_info(
 	movie_trailer VARCHAR2(1000), -- 영화 트레일러 경로
 	movie_time VARCHAR2(10), -- 러닝 타임
 	movie_rating VARCHAR2(10) -- 영화 평점
+	movie_nation varchar2(25) -- 제작 국가
 );
 
 -- 영화 정보 번호를 얻어낼 시퀀스
