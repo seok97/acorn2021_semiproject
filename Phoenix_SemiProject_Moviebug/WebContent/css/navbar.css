@@ -1,3 +1,18 @@
+nav{
+	height: 65px; 
+}
+
+header{
+	text-align: center;
+}
+.flex_box{
+	display: flex;
+}
+
+nav .container{
+	padding :0;
+}
+
 .header_navwrpper{
 	padding: 0;
 }
@@ -9,22 +24,25 @@
 	}
 }
 
-nav{
-	height: 65px; 
+.nav_header_menu{
+	-webkit-box-pack: justify;
 }
 
-nav div.container{
-	
+.nav_header_menu01{
+	flex: 1 0 25%;
+    text-align: center;
 }
 
-nav .nav_wrapper,.nav_w_right,.nav_user{
-	display: flex;
-}
-
-nav .nav_wrapper{
-	justify-content: space-between;
-}
-
-nav .nav_w_right{
-	justify-content: center;
+.nav_header_menu02{
+	width: 10rem;
+    position: absolute;
+    inset: 0px;
+    margin: 0px auto;
+    padding: 0px 1rem;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
 }

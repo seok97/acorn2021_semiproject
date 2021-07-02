@@ -49,7 +49,9 @@ public class LoginFilter implements Filter{
       HttpServletRequest req=(HttpServletRequest)request;
       HttpSession session=req.getSession();
       String id=(String)session.getAttribute("id");
+      System.out.println(id);
       if(id != null) {
+    	  System.out.println(id);
          //2. 만일 로그인을 했다면 관여 하지 않고 요청의 흐름을 이어간다. (FilterChain 객체)
          chain.doFilter(request, response);
       }else {
@@ -73,6 +75,7 @@ public class LoginFilter implements Filter{
          }
          
          //3. 로그인을 하지 않았다면  /users/loginform.jsp 페이지로 리다일렉트 이동 시킨다. (HttpServletResponse)
+         System.out.println(id);
          String cPath=req.getContextPath();
          HttpServletResponse resp=(HttpServletResponse)response;
          resp.sendRedirect(cPath+"/users/loginform.jsp?url="+encodedUrl);
