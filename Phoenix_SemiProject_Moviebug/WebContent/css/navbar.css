@@ -13,6 +13,12 @@ nav .container{
 	padding :0;
 }
 
+nav button{
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+}
+
 .header_navwrpper{
 	padding: 0;
 }
@@ -25,7 +31,14 @@ nav .container{
 }
 
 .nav_header_menu{
-	-webkit-box-pack: justify;
+	display: -webkit-box;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+    max-height: 70px;
 }
 
 .nav_header_menu01{
@@ -45,4 +58,14 @@ nav .container{
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
+}
+
+.nav_header_menu03{
+	    text-align: right;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    min-height: 58px;
 }
