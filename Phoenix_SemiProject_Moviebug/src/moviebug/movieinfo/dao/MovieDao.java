@@ -10,6 +10,7 @@ import moviebug.movieinfo.dto.MovieDto;
 import test.util.DbcpBean;
 
 public class MovieDao {
+	
 	private static MovieDao dao;
 	
 	static {
@@ -17,7 +18,7 @@ public class MovieDao {
 	}
 	
 	private MovieDao () {}
-	private MovieDao getInstance() {
+	public static MovieDao getInstance() {
 		return dao;
 	}
 	
@@ -110,7 +111,7 @@ public class MovieDao {
 	
 	
 	
-	public List<MovieDto> getList(MovieDto dto){
+	public List<MovieDto> getNewMovies(){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -119,14 +120,23 @@ public class MovieDao {
 			conn = new DbcpBean().getConn();
 			// 실행할 sql 문 작성
 
-			String sql = "";
+			String sql = "select result.* from "
+					+ "(select movie_num,movie_title_kr,movie_title_eng,movie_year,"
+					+ "movie_genre from movie_info order by movie_year desc) result "
+					+ "where rownum <= 3";
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
 
 			 rs = pstmt.executeQuery();
 			 
 			 while(rs.next()) {
-				 
+				 MovieDto tmp = new MovieDto();
+				 tmp.setMovie_num(rs.getInt("movie_num"));
+				 tmp.setMovie_title_eng(rs.getString("movie_title_eng"));
+				 tmp.setMovie_title_kr(rs.getString("movie_title_kr"));
+				 tmp.setMovie_year(rs.getString("movie_year"));
+				 tmp.setMovie_genre(rs.getString("movie_genre"));
+				 list.add(tmp);
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,13 @@
+<%@page import="moviebug.movieinfo.dao.MovieDao"%>
+<%@page import="moviebug.movieinfo.dto.MovieDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%
+	// 최신 영화 3개 리스트 가져오기
+	List<MovieDto> NewMovieList = MovieDao.getInstance().getNewMovies();
+	
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +15,7 @@ pageEncoding="UTF-8"%>
     <title>index.jsp</title>
     <jsp:include page="include/resource.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/index.css" />
   </head>
   <body>
     <jsp:include page="include/navbar.jsp"></jsp:include>
@@ -40,34 +48,24 @@ pageEncoding="UTF-8"%>
               aria-label="Slide 3"
             ></button>
           </div>
+          
           <div class="carousel-inner">
-            <div class="carousel-item active">
+          
+          <%for(int i = 0; i < NewMovieList.size(); i++) {
+          	MovieDto dto = NewMovieList.get(i);
+          %>
+            <div class="carousel-item <%= i == 0 ?  "active" : ""%>">
               <img src="images/bigdata.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
+                <h5><%=dto.getMovie_title_kr() %></h5>
                 <p>
-                  Some representative placeholder content for the first slide.
+                  <%= dto.getMovie_title_eng()%>
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
-              <img src="images/bigdata.jpg" class="d-block w-100" alt="..." />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="images/bigdata.jpg" class="d-block w-100" alt="..." />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
+            <%} %>
+            
+            
           </div>
           <button
             class="carousel-control-prev"
@@ -94,15 +92,17 @@ pageEncoding="UTF-8"%>
         <div class="row">
           <div class="col">
             <div class="row">
+        <!-- ****************************************** -->
+        <%for(int i = 0 ; i<4; i++){ %>
               <div class="col">
-                <div class="card">
+                <div class="card border-0">
                   <img
                     src="images/bigdata.jpg"
                     class="card-img-top"
                     alt="..."
                   />
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Card title 0<%=i %></h5>
                     <p class="card-text">
                       This is a longer card with supporting text below as a
                       natural lead-in to additional c
@@ -110,50 +110,9 @@ pageEncoding="UTF-8"%>
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a short card.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a longer card with supporting text be
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a longer card with supporting text below as a
-                      natural lead-in to
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <%} %>
+      <!-- ********************************************* -->
+             
             </div>
           </div>
         </div>
@@ -166,66 +125,28 @@ pageEncoding="UTF-8"%>
         <div class="row">
           <div class="col">
             <div class="row">
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional c
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a short card.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a longer card with supporting text be
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img
-                    src="images/bigdata.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a longer card with supporting text below as a
-                      natural lead-in to
-                    </p>
-                  </div>
-                </div>
-              </div>
+              
+         <!-- ****************************************** -->
+		        <%for(int i = 0 ; i<4; i++){ %>
+		              <div class="col">
+		                <div class="card border-0">
+		                  <img
+		                    src="images/bigdata.jpg"
+		                    class="card-img-top"
+		                    alt="..."
+		                  />
+		                  <div class="card-body">
+		                    <h5 class="card-title">Card title 0<%=i %></h5>
+		                    <p class="card-text">
+		                      This is a longer card with supporting text below as a
+		                      natural lead-in to additional c
+		                    </p>
+		                  </div>
+		                </div>
+		              </div>
+		              <%} %>
+		      <!-- ********************************************* -->
+             
             </div>
           </div>
         </div>

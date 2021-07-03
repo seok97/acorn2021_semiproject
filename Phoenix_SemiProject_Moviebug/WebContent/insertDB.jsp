@@ -43,6 +43,9 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
       let keyword = ""
       let moviename = "&movieNm="
       let director = "&directorNm="
+      
+      let box = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=" + apikey
+      
       let movieListApi =
         "http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=" +
         apikey
@@ -99,7 +102,7 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
       
       const movieList = () => {
         let ajaxReq =
-          movieListApi + "&openStartDt=2000&openEndDt=2021&itemPerPage=10"
+          movieListApi + "&openStartDt=2000&openEndDt=2021&itemPerPage=600&curPage=30"
         console.log(ajaxReq)
         fetch(ajaxReq)
           .then((res) => {
