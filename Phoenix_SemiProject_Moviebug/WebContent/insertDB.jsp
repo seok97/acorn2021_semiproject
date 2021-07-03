@@ -1,10 +1,12 @@
-<%@page import="test.movie.movieDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@page import="moviebug.movieinfo.dao.MovieDao"%>
+<%@page import="moviebug.movieinfo.dto.MovieDto"%> 
+<%@ page language="java"
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
 <%
-	movieDto dto = new movieDto();
 	
 %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,6 +27,10 @@ pageEncoding="UTF-8"%>
       <p>제작국가 : <span id="nation"></span></p>
       <p>장르 : <span id="genre"></span></p>
       <p>개봉일 : <span id="opendt"></span></p>
+    </div>
+
+    <div class="insertDB">
+      <button id="btn">db에 데이터 넣기</button>
     </div>
     <script>
       let retitle = document.querySelector("#title")
@@ -49,7 +55,7 @@ pageEncoding="UTF-8"%>
           })
           .then((data) => {
             console.log(data.movieListResult.movieList[0].movieNmEn)
-            
+
             retitle.innerText = data.movieListResult.movieList[0].movieNm
             retitle_en.innerText = data.movieListResult.movieList[0].movieNmEn
             redirec.innerText =
@@ -59,6 +65,7 @@ pageEncoding="UTF-8"%>
             reopendt.innerText = data.movieListResult.movieList[0].openDt
           })
       }
+
       document
         .querySelector("#keyword")
         .addEventListener("keyup", function (e) {
@@ -68,6 +75,46 @@ pageEncoding="UTF-8"%>
             SearchMovieName(keyword)
           }
         })
+
+      let resultdata
+
+
+      const insertDb = (data) => {
+        console.log(JSON.stringify(data))
+        fetch("insert.jsp", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            return res.json()
+          })
+          .then((d) => {
+            console.log(d)
+          })
+      }
+      
+      
+      const movieList = () => {
+        let ajaxReq =
+          movieListApi + "&openStartDt=2000&openEndDt=2021&itemPerPage=10"
+        console.log(ajaxReq)
+        fetch(ajaxReq)
+          .then((res) => {
+            return res.json()
+          })
+          .then((data) => {
+            resultdata = data.movieListResult.movieList
+            insertDb(resultdata)
+            console.log(data.movieListResult.movieList[0].movieNmEn)
+          })
+      }
+
+      document.querySelector("#btn").addEventListener("click", () => {
+        movieList()
+      })
     </script>
   </body>
 </html>

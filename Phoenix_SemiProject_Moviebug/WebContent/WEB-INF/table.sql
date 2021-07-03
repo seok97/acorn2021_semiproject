@@ -50,6 +50,7 @@ CREATE TABLE movie_info(
 	movie_time VARCHAR2(10), -- 러닝 타임
 	movie_rating VARCHAR2(10) -- 영화 평점
 	movie_nation varchar2(25) -- 제작 국가
+	movie_director varchar2(20) -- 감독
 );
 
 -- 영화 정보 번호를 얻어낼 시퀀스

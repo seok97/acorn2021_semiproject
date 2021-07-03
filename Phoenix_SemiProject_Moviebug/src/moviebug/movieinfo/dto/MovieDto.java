@@ -1,6 +1,6 @@
-package test.movie;
+package moviebug.movieinfo.dto;
 
-public class movieDto {
+public class MovieDto {
 	private int movie_num;
 	private String movie_title_kr;
 	private String movie_title_eng;
@@ -13,11 +13,29 @@ public class movieDto {
 	private String movie_trailer;
 	private String movie_time;
 	private String movie_rating;
+	private String movie_nation;
+	private String movie_director;
 	
-	public void movieDto() {
+	public void MovieDto() {
 		
 	}
 	
+	public String getMovie_director() {
+		return movie_director;
+	}
+
+	public void setMovie_director(String movie_director) {
+		this.movie_director = movie_director;
+	}
+
+	public String getMovie_nation() {
+		return movie_nation;
+	}
+
+	public void setMovie_nation(String movie_nation) {
+		this.movie_nation = movie_nation;
+	}
+
 	public int getMovie_num() {
 		return movie_num;
 	}
