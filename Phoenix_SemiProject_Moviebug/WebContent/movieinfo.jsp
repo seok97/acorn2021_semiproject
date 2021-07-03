@@ -1,5 +1,13 @@
+<%@page import="moviebug.movieinfo.dto.MovieDto"%>
+<%@page import="moviebug.movieinfo.dao.MovieDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	//임의의 영화번호
+	int testNum=321;
+
+	MovieDto dto=MovieDao.getInstance().getData(testNum);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,20 +66,19 @@
 	
 	
 		<div class="genre-container mb-3">
-			<span>#멜로</span>
-			<span>#로맨스</span>
-			<span>#SF</span>
+			<p><%=dto.getMovie_genre() %></p>
 		</div>
 		
 		
 		<div class="title-container mb-3">
-			<h1>이터널 선샤인</h1>
+			<h1><%=dto.getMovie_title_kr() %></h1>
+			<h5><%=dto.getMovie_title_eng() %></h5>
 		</div>
 		
 		
 		<div class="movieInfo-container row align-items-center">
 			<div class="movieInfo_item trailer">
-				<img class="img-fluid" src="images/test_poster.jpg"/>
+				<img src="<%=dto.getMovie_image() %>"/>
 			</div>
 			<div class="movieInfo_item detail">
 				<div class="btn-group mt-1" role="group" aria-label="Basic outlined example">

@@ -10,14 +10,13 @@ import moviebug.movieinfo.dto.MovieDto;
 import test.util.DbcpBean;
 
 public class MovieDao {
+
 	private static MovieDao dao;
-	
-	static {
-		dao = new MovieDao();
-	}
-	
-	private MovieDao () {}
-	private MovieDao getInstance() {
+	private MovieDao() {}
+	public static MovieDao getInstance() {
+		if(dao==null) {
+			dao=new MovieDao();
+		}
 		return dao;
 	}
 	
