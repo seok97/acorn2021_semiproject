@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 // @WebFilter("/*") : 이 프로젝트의 모든 요청에 대해서 필터가 동작하도록 한다.
-// @WebFilter("/*")
+@WebFilter("/*")
 public class EncodingFilter implements Filter {
 	//필드
 	private String encoding;
