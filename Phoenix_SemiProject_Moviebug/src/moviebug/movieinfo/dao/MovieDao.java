@@ -96,8 +96,8 @@ public class MovieDao {
 			pstmt.setString(9, dto.getMovie_trailer());
 			pstmt.setString(10, dto.getMovie_time());
 			pstmt.setString(11, dto.getMovie_rating());
-			pstmt.setString(11, dto.getMovie_nation());
-			pstmt.setString(11, dto.getMovie_director());
+			pstmt.setString(12, dto.getMovie_nation());
+			pstmt.setString(13, dto.getMovie_director());
 			
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
