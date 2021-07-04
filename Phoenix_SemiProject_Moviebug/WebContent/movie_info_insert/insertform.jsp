@@ -21,7 +21,7 @@
 			</div>
 			<div>
 				<label class="form-label" for="movie_story">줄거리</label>
-				<textarea class="form-control" name="movie_story" id="movie_story"></textarea>
+				<input class="form-control" type="text" name="movie_story" id="movie_story"></input>
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="movie_character">영화 출연진</label>
