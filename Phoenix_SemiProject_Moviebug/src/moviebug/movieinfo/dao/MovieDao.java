@@ -80,9 +80,9 @@ public class MovieDao {
 			conn = new DbcpBean().getConn();
 			// 실행할 sql 문 작성
 
-			String sql = "insert into movie_info ("+
-					"movie_num,movie_title_kr ,movie_title_eng ,movie_story,movie_character,movie_year,movie_genre,movie_company,movie_image,movie_trailer,movie_time,movie_rating" 
-					+ ") values (movie_info_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO movie_info"
+					+ " (movie_num,movie_title_kr ,movie_title_eng ,movie_story,movie_character,movie_year,movie_genre,movie_company,movie_image,movie_trailer,movie_time,movie_rating,movie_nation,movie_director)"
+					+ " VALUES(movie_info_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
 			pstmt.setString(1,dto.getMovie_title_kr());
@@ -96,6 +96,8 @@ public class MovieDao {
 			pstmt.setString(9, dto.getMovie_trailer());
 			pstmt.setString(10, dto.getMovie_time());
 			pstmt.setString(11, dto.getMovie_rating());
+			pstmt.setString(11, dto.getMovie_nation());
+			pstmt.setString(11, dto.getMovie_director());
 			
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
