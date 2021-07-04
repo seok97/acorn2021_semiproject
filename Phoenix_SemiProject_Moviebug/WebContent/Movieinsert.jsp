@@ -4,7 +4,34 @@
 contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 
 <%
-	
+	/* 
+		
+insert into movie_info (movie_num,
+movie_title_kr ,
+movie_title_eng ,
+movie_story,
+movie_character,
+movie_year,
+movie_genre,
+movie_company,
+movie_image,
+movie_trailer,
+movie_time,
+movie_rating)
+ values 
+(movie_info_seq.nextval,
+'테스트05',
+'test05',
+'테스트스토리내용',
+'테스트등장인물',
+'20210705',
+'스릴러',
+'테스트영화사03',
+'',
+'유튜브링크',
+'140',
+'6')
+	*/
 %>
 
 <!DOCTYPE html>
@@ -84,7 +111,7 @@ contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
       const insertDb = (data) => {
         console.log(JSON.stringify(data))
-        fetch("insert.jsp", {
+        fetch("getMovieList.jsp", {
           method: "post",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",

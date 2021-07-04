@@ -4,9 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
-	// 최신 영화 3개 리스트 가져오기
+	// 메인 carousel 최신 영화 3개 리스트 가져오기
 	List<MovieDto> NewMovieList = MovieDao.getInstance().getNewMovies();
 	
+	// 평점순위 4개 영화 리스트 가져오기
+	List<MovieDto> Top4List = MovieDao.getInstance().getTop4ResList();
 %>
 <!DOCTYPE html>
 <html>
@@ -89,6 +91,9 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="row index_content02">
+      	<div class="row">
+      		카테고리 ( 예매율 순위 )
+      	</div>
         <div class="row">
           <div class="col">
             <div class="row">
@@ -116,31 +121,34 @@ pageEncoding="UTF-8"%>
             </div>
           </div>
         </div>
-        <div class="row">
-          <span>더보기</span>
+        <div class="row align-self-center justify-content-center morewrapper">
+          <a href="#" title="" class="moreanchor">더보기</a>
         </div>
       </div>
 
       <div class="row index_content03">
         <div class="row">
+      		카테고리 ( 최근개봉영화(한달이내) 가장 높은 평점 )
+      	</div>
+        <div class="row">
           <div class="col">
             <div class="row">
               
          <!-- ****************************************** -->
-		        <%for(int i = 0 ; i<4; i++){ %>
+		        <%for(MovieDto dto: Top4List){ %>
 		              <div class="col">
 		                <div class="card border-0">
 		                  <img
-		                    src="images/bigdata.jpg"
+		                    src="<%=dto.getMovie_image() != null ? dto.getMovie_image():"images/bigdata.jpg" %>"
 		                    class="card-img-top"
-		                    alt="..."
-		                  />
+		                    alt="<%=dto.getMovie_title_kr() %>"/>
 		                  <div class="card-body">
-		                    <h5 class="card-title">Card title 0<%=i %></h5>
+		                    <h5 class="card-title"><%=dto.getMovie_title_kr() %></h5>
+		                    <p class="card-text"><small class="text-muted"><%=dto.getMovie_nation() %> | <%=dto.getMovie_genre() %></small></p>
 		                    <p class="card-text">
-		                      This is a longer card with supporting text below as a
-		                      natural lead-in to additional c
+		                      <%=dto.getMovie_story() %>
 		                    </p>
+		                    <p class="card-text"><small class="text-danger">평점 <%=dto.getMovie_rating() %></small></p>
 		                  </div>
 		                </div>
 		              </div>
@@ -150,8 +158,8 @@ pageEncoding="UTF-8"%>
             </div>
           </div>
         </div>
-        <div class="row">
-          <span>더보기</span>
+        <div class="row align-self-center justify-content-center morewrapper">
+          <a href="#" title="" class="moreanchor">더보기</a>
         </div>
       </div>
 

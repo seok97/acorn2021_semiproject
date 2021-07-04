@@ -1,5 +1,14 @@
-body{
-	
+a {
+    text-decoration: none;
+}
+
+a:active, a:hover {
+    outline: 0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 div.index_content{
@@ -23,3 +32,22 @@ div.index_content{
 	display: flex;
 }
 
+.morewrapper{
+	
+}
+
+.moreanchor{
+	display: flex;
+    justify-content: center;
+    border: 1px solid rgb(230, 230, 230);
+    padding: 8px;
+    border-radius: 22px;
+	width: 30%;
+	margin: 15px 0;
+	color: rgb(109, 109, 109);
+}
+
+.moreanchor:hover{
+	color: rgb(109, 109, 109);
+	background: rgb(242, 242, 242);
+}
