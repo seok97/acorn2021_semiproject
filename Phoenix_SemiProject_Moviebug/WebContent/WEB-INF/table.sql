@@ -62,10 +62,10 @@ CREATE TABLE movie_info(
 	movie_company VARCHAR2(100), -- 제작사
 	movie_image VARCHAR2(1000), -- 영화 이미지 경로
 	movie_trailer VARCHAR2(1000), -- 영화 트레일러 경로
-	movie_time VARCHAR2(10), -- 러닝 타임
-	movie_rating VARCHAR2(10), -- 영화 평점
-	movie_nation VARCHAR2(25), -- 제작 국가
-	movie_director VARCHAR2(20) -- 감독
+	movie_time VARCHAR2(100), -- 러닝 타임
+	movie_rating VARCHAR2(100), -- 영화 평점
+	movie_nation VARCHAR2(100), -- 제작 국가
+	movie_director VARCHAR2(100) -- 감독
 );
 
 -- 영화 정보 번호를 얻어낼 시퀀스
