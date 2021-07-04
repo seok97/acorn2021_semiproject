@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	//임의의 영화번호
-	int testNum=321;
+	int testNum=367;
 
 	MovieDto dto=MovieDao.getInstance().getData(testNum);
 %>
