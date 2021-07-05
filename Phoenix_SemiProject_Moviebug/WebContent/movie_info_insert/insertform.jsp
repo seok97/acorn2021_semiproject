@@ -8,8 +8,11 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
+
 	<div class="container">
+	
 		<h1>영화 정보 저장 폼</h1>
+				
 		<form action="insert.jsp" method="post" id="insertForm">
 			<div class="mb-3">
 				<label class="form-label" for="movie_title_kr">영화제목(한글)</label>
@@ -63,9 +66,8 @@
 				<label class="form-label" for="movie_rating">영화 평점</label>
 				<input class="form-control" type="text" name="movie_rating" id="movie_rating" />
 			</div>
-			
-			
 			<button class="btn btn-primary" type="submit">저장</button>
+			
 		</form>
 	</div>
 </body>
