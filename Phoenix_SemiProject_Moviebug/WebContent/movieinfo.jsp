@@ -5,7 +5,6 @@
 <%
 	//임의의 영화번호
 	int testNum=603;
-
 	MovieDto dto=MovieDao.getInstance().getData(testNum);
 %>
 <!DOCTYPE html>
@@ -16,7 +15,6 @@
 <jsp:include page="include/resource.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
 <style>
-
 	.genre-container{
 		text-align: center;
 	}
