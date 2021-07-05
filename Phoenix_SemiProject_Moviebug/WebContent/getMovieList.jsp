@@ -32,16 +32,29 @@
 		MovieDto dto = new MovieDto();	
 		JSONObject jsobj = jsonarr.getJSONObject(i);
 		
-/* 		// 객체안의 배열 파싱 제작사
+		// 객체안의 배열 파싱 제작사
 		JSONArray parse_jsobj = (JSONArray)jsobj.get("companys");
-		JSONObject ppobj = (JSONObject)parse_jsobj.get(0);
-		System.out.println(ppobj.getString("companyNm"));
-		dto.setMovie_company(ppobj.getString("companyNm"));
+		JSONObject ppobj = new JSONObject();
+		
+		System.out.println("array size : "+parse_jsobj.length());
+		
+		if(parse_jsobj.length() > 0){
+			ppobj = (JSONObject)parse_jsobj.get(0);
+			System.out.println(ppobj.getString("companyNm"));
+			dto.setMovie_company(ppobj.getString("companyNm")); 
+		}
+		
+		
 		// 객체 배열 파싱 감독
 		JSONArray parse_jsobj02 = (JSONArray)jsobj.get("directors");
-		JSONObject ppobj02 = (JSONObject)parse_jsobj02.get(0);
-		System.out.println(ppobj02.getString("peopleNm"));
-		dto.setMovie_company(ppobj02.getString("peopleNm")); */
+		JSONObject ppobj02 = new JSONObject();
+		
+		if(parse_jsobj02.length() > 0){
+			ppobj02 = (JSONObject)parse_jsobj02.get(0);
+			dto.setMovie_company(ppobj02.getString("peopleNm")); 
+			System.out.println(ppobj02.getString("peopleNm"));
+		}
+		
 		
 		// 성인 영화 제거
 		if(!jsobj.getString("genreAlt").equals("성인물(에로)") && !jsobj.getString("genreAlt").equals("멜로/로맨스,드라마")){
@@ -51,7 +64,7 @@
 		dto.setMovie_title_eng(jsobj.getString("movieNmEn"));
 		dto.setMovie_year(jsobj.getString("openDt"));
 		dto.setMovie_genre(jsobj.getString("genreAlt"));
-		dto.setMovie_nation(jsobj.getString("nationAlt"));
+		dto.setMovie_nation(jsobj.getString("repNationNm"));
 		
 		list.add(dto);
 		}

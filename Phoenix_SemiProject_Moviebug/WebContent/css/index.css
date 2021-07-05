@@ -1,10 +1,12 @@
 a {
     text-decoration: none;
+    color: rgb(109, 109, 109);
 }
 
 a:active, a:hover {
     outline: 0;
     text-decoration: none;
+    color: rgb(109, 109, 109);
 }
 
 a:hover {
@@ -50,4 +52,13 @@ div.index_content{
 .moreanchor:hover{
 	color: rgb(109, 109, 109);
 	background: rgb(242, 242, 242);
+}
+
+
+.index_category{
+	font-size:20px;
+	margin: 10px 20px;
+	font-family: 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, 'NotoSansKR', sans-serif;
+	letter-spacing: -0.025em;
+	font-weight: bold;
 }

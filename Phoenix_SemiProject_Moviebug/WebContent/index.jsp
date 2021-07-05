@@ -4,6 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
+	// 로그인 상태 확인
+	boolean isLogin = false;
+	/* String email = (String)session.getAttribute("email"); */
+	String email = request.getParameter("email");
+	if(email != null) isLogin = true;
+
 	// 메인 carousel 최신 영화 3개 리스트 가져오기
 	List<MovieDto> NewMovieList = MovieDao.getInstance().getNewMovies();
 	
@@ -18,9 +24,17 @@ pageEncoding="UTF-8"%>
     <jsp:include page="include/resource.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/index.css" />
+    
+    <!-- 웹폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&display=swap" rel="stylesheet">
+
   </head>
   <body>
-    <jsp:include page="include/navbar.jsp"></jsp:include>
+    <jsp:include page="include/navbar.jsp"> 
+    	<jsp:param value="<%=email != null ? email:null %>" name="email"/>
+    </jsp:include>
 
     <div class="container index_content">
       <div class="row index_content01">
@@ -91,8 +105,10 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="row index_content02">
-      	<div class="row">
-      		카테고리 ( 예매율 순위 )
+      	 <div class="row">
+	        <div class="col flex_box index_category">
+	      		카테고리 ( 최근개봉영화(한달이내) 가장 높은 평점 )
+	        </div>
       	</div>
         <div class="row">
           <div class="col">
@@ -128,7 +144,9 @@ pageEncoding="UTF-8"%>
 
       <div class="row index_content03">
         <div class="row">
-      		카테고리 ( 최근개봉영화(한달이내) 가장 높은 평점 )
+	        <div class="col flex_box index_category">
+	      		고전 명작
+	        </div>
       	</div>
         <div class="row">
           <div class="col">
