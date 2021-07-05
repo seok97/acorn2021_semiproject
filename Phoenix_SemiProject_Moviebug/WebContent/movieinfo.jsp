@@ -90,10 +90,15 @@
 				</iframe>
 			</div>
 			<div class="movieInfo_item detail">
-				<div class="btn-group mt-1" role="group" aria-label="Basic outlined example">
-	  				<button id="btnOne" type="button" class="btn btn-outline-primary">기본 정보</button>
-	  				<button id="btnTwo" type="button" class="btn btn-outline-primary">감독 / 출연진</button>
-	  				<button id="btnThree" type="button" class="btn btn-outline-primary">유저 평점</button>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+	  				<input type="radio" class="btn-check" name="btnradio" id="btnOne" autocomplete="off" checked>
+	  				<label class="btn btn-outline-primary" for="btnOne">기본정보</label>
+	
+	  				<input type="radio" class="btn-check" name="btnradio" id="btnTwo" autocomplete="off">
+	  				<label class="btn btn-outline-primary" for="btnTwo">감독/출연진</label>
+	
+	  				<input type="radio" class="btn-check" name="btnradio" id="btnThree" autocomplete="off">
+	  				<label class="btn btn-outline-primary" for="btnThree">유저평점</label>
 				</div>
 				
 				<div class="mt-3" id="movieInfo_wrapper">
@@ -111,7 +116,7 @@
 	
 <script>
 	
-	document.querySelector("#btnOne").addEventListener("click",function(){
+	function infoOne(){
 		const div=document.querySelector("#movieInfo_wrapper");
 		div.innerHTML="";
 		const ul=document.createElement("ul");
@@ -137,9 +142,9 @@
 		ul.append(li6);
 		
 		div.append(ul);
-	});
+	}
 	
-	document.querySelector("#btnTwo").addEventListener("click",function(){
+	function infoTwo(){
 		const div=document.querySelector("#movieInfo_wrapper");
 		div.innerHTML="";
 		const ul=document.createElement("ul");
@@ -152,9 +157,9 @@
 		ul.append(li2);
 		
 		div.append(ul);
-	});
+	}
 	
-	document.querySelector("#btnThree").addEventListener("click",function(){
+	function infoThree(){
 		const div=document.querySelector("#movieInfo_wrapper");
 		div.innerHTML="";
 		
@@ -162,6 +167,18 @@
 		h1.setAttribute('id','rating');
 		h1.innerText="<%=dto.getMovie_rating()%> 점";
 		div.append(h1);
+	}
+	
+	infoOne();
+	
+	document.querySelector("#btnOne").addEventListener("click",function(){
+		infoOne();
+	});
+	document.querySelector("#btnTwo").addEventListener("click",function(){
+		infoTwo();
+	});
+	document.querySelector("#btnThree").addEventListener("click",function(){
+		infoThree();
 	});
 	
 	
