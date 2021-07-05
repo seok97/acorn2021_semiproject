@@ -54,12 +54,14 @@
 	.btn-group{
 		width:100%;
 		height: 10%;
+		margin-top: 10px;
 	}
 	
 	li { font-size: 15px; line-height: 30px; }
 	
 	#rating {
 		text-align: center;
+		margin-top: 10%;
 	}
 	
 	
@@ -92,13 +94,16 @@
 			<div class="movieInfo_item detail">
 				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 	  				<input type="radio" class="btn-check" name="btnradio" id="btnOne" autocomplete="off" checked>
-	  				<label class="btn btn-outline-primary" for="btnOne">기본정보</label>
+	  				<label class="btn btn-outline-secondary" for="btnOne">기본정보</label>
 	
 	  				<input type="radio" class="btn-check" name="btnradio" id="btnTwo" autocomplete="off">
-	  				<label class="btn btn-outline-primary" for="btnTwo">감독/출연진</label>
-	
+	  				<label class="btn btn-outline-secondary" for="btnTwo">감독/출연진</label>
+	  				
 	  				<input type="radio" class="btn-check" name="btnradio" id="btnThree" autocomplete="off">
-	  				<label class="btn btn-outline-primary" for="btnThree">유저평점</label>
+	  				<label class="btn btn-outline-secondary" for="btnThree">줄거리</label>
+	
+	  				<input type="radio" class="btn-check" name="btnradio" id="btnFour" autocomplete="off">
+	  				<label class="btn btn-outline-secondary" for="btnFour">유저평점</label>
 				</div>
 				
 				<div class="mt-3" id="movieInfo_wrapper">
@@ -125,21 +130,18 @@
 		const li3=document.createElement("li");
 		const li4=document.createElement("li");
 		const li5=document.createElement("li");
-		const li6=document.createElement("li");
 		
 		li1.innerText="제작년월 : <%=dto.getMovie_year()%>";
 		li2.innerText="장르 : <%=dto.getMovie_genre()%>";
 		li3.innerText="국가 : <%=dto.getMovie_nation()%>";
 		li4.innerText="러닝타임 : <%=dto.getMovie_time()%>";
 		li5.innerText="제작사 : <%=dto.getMovie_company()%>";
-		li6.innerText="줄거리 : <%=dto.getMovie_story()%>";
 		
 		ul.append(li1);
 		ul.append(li2);
 		ul.append(li3);
 		ul.append(li4);
 		ul.append(li5);
-		ul.append(li6);
 		
 		div.append(ul);
 	}
@@ -163,6 +165,16 @@
 		const div=document.querySelector("#movieInfo_wrapper");
 		div.innerHTML="";
 		
+		const p=document.createElement("p");
+		p.setAttribute('class','mt-3');
+		p.innerText="<%=dto.getMovie_story()%>";
+		div.append(p);
+	}
+	
+	function infoFour(){
+		const div=document.querySelector("#movieInfo_wrapper");
+		div.innerHTML="";
+		
 		const h1=document.createElement("h1");
 		h1.setAttribute('id','rating');
 		h1.innerText="<%=dto.getMovie_rating()%> 점";
@@ -179,6 +191,9 @@
 	});
 	document.querySelector("#btnThree").addEventListener("click",function(){
 		infoThree();
+	});
+	document.querySelector("#btnFour").addEventListener("click",function(){
+		infoFour();
 	});
 	
 	
