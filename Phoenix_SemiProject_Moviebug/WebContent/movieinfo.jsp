@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	//임의의 영화번호
-	int testNum=367;
+	int testNum=603;
 
 	MovieDto dto=MovieDao.getInstance().getData(testNum);
 %>
@@ -82,15 +82,77 @@
 			</div>
 			<div class="movieInfo_item detail">
 				<div class="btn-group mt-1" role="group" aria-label="Basic outlined example">
-	  				<button type="button" class="btn btn-outline-primary">기본 정보</button>
-	  				<button type="button" class="btn btn-outline-primary">감독 / 출연진</button>
-	  				<button type="button" class="btn btn-outline-primary">유저 평점</button>
+	  				<button id="btnOne" type="button" class="btn btn-outline-primary">기본 정보</button>
+	  				<button id="btnTwo" type="button" class="btn btn-outline-primary">감독 / 출연진</button>
+	  				<button id="btnThree" type="button" class="btn btn-outline-primary">유저 평점</button>
 				</div>
+				
+				<div id="movieInfo_wrapper">
+					
+				</div>
+				
+				
+				
 			</div>			
 		</div>
 		
 		
 		
 	</div>
+<script>
+	
+	document.querySelector("#btnOne").addEventListener("click",function(){
+		const div=document.querySelector("#movieInfo_wrapper");
+		div.innerHTML="";
+		const ul=document.createElement("ul");
+		const li1=document.createElement("li");
+		const li2=document.createElement("li");
+		const li3=document.createElement("li");
+		const li4=document.createElement("li");
+		const li5=document.createElement("li");
+		const li6=document.createElement("li");
+		
+		li1.innerText="제작년월 : <%=dto.getMovie_year()%>";
+		li2.innerText="장르 : <%=dto.getMovie_genre()%>";
+		li3.innerText="국가 : <%=dto.getMovie_nation()%>";
+		li4.innerText="러닝타임 : <%=dto.getMovie_time()%>";
+		li5.innerText="제작사 : <%=dto.getMovie_company()%>";
+		li6.innerText="줄거리 : <%=dto.getMovie_story()%>";
+		
+		ul.append(li1);
+		ul.append(li2);
+		ul.append(li3);
+		ul.append(li4);
+		ul.append(li5);
+		ul.append(li6);
+		
+		div.append(ul);
+	});
+	
+	document.querySelector("#btnTwo").addEventListener("click",function(){
+		const div=document.querySelector("#movieInfo_wrapper");
+		div.innerHTML="";
+		const ul=document.createElement("ul");
+		const li1=document.createElement("li");
+		const li2=document.createElement("li");
+		li1.innerText="감독 : <%=dto.getMovie_director()%>";
+		li2.innerText="출연진 : <%=dto.getMovie_character()%>";
+		
+		ul.append(li1);
+		ul.append(li2);
+		
+		div.append(ul);
+	});
+	
+	document.querySelector("#btnThree").addEventListener("click",function(){
+		const div=document.querySelector("#movieInfo_wrapper");
+		div.innerHTML="";
+		const h1=document.createElement("h1");
+		h1.innerText="평점 : <%=dto.getMovie_rating()%> 점";
+		div.append(h1);
+	});
+	
+	
+</script>
 </body>
 </html>
