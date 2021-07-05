@@ -74,6 +74,52 @@ public class MovieDao {
 		return dto;
 	}
 	
+	// 한달이내 평점이 가장 높음 4개의 영화 리스트 구하기
+	public List<MovieDto> getTop4ResList(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MovieDto> list = new ArrayList<>();
+		try {
+			conn = new DbcpBean().getConn();
+			// 실행할 sql 문 작성
+			
+			String sql = "select result01.*,rownum from " + 
+					"(select movie_title_kr, movie_story, movie_genre,movie_image,movie_rating, movie_year, to_char(sysdate,'yyyymmdd') \"오늘날짜\"" + 
+					" from movie_info where sysdate-30 <= movie_year order by movie_year desc) result01" + 
+					" where rownum < 5" + 
+					" order by movie_rating desc";
+			System.out.println(sql);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MovieDto dto = new MovieDto();
+				dto.setMovie_genre(rs.getString("movie_genre"));
+				/* dto.setMovie_image(rs.getString("movie_image")); */
+				dto.setMovie_title_kr(rs.getString("movie_title_kr"));
+				dto.setMovie_story(rs.getString("movie_story"));
+				dto.setMovie_rating(rs.getString("movie_rating"));
+				dto.setMovie_year(rs.getString("movie_year"));
+				list.add(dto);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+				if(rs != null) rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
 	public boolean insert(MovieDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -82,9 +128,9 @@ public class MovieDao {
 			conn = new DbcpBean().getConn();
 			// 실행할 sql 문 작성
 
-			String sql = "INSERT INTO movie_info"
-					+ " (movie_num,movie_title_kr ,movie_title_eng ,movie_story,movie_character,movie_year,movie_genre,movie_company,movie_image,movie_trailer,movie_time,movie_rating,movie_nation,movie_director)"
-					+ " VALUES(movie_info_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into movie_info ("+
+					"movie_num,movie_title_kr ,movie_title_eng ,movie_story,movie_character,movie_year,movie_genre,movie_company,movie_image,movie_trailer,movie_time,movie_rating,movie_nation,movie_director" 
+					+ ") values (movie_info_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
 			pstmt.setString(1,dto.getMovie_title_kr());
@@ -163,7 +209,7 @@ public class MovieDao {
 	
 	
 	
-	public List<MovieDto> getList(MovieDto dto){
+	public List<MovieDto> getNewMovies(){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -172,14 +218,23 @@ public class MovieDao {
 			conn = new DbcpBean().getConn();
 			// 실행할 sql 문 작성
 
-			String sql = "";
+			String sql = "select result.* from "
+					+ "(select movie_num,movie_title_kr,movie_title_eng,movie_year,"
+					+ "movie_genre from movie_info order by movie_year desc) result "
+					+ "where rownum <= 3";
 			pstmt = conn.prepareStatement(sql);
 			// 바인딩
 
 			 rs = pstmt.executeQuery();
 			 
 			 while(rs.next()) {
-				 
+				 MovieDto tmp = new MovieDto();
+				 tmp.setMovie_num(rs.getInt("movie_num"));
+				 tmp.setMovie_title_eng(rs.getString("movie_title_eng"));
+				 tmp.setMovie_title_kr(rs.getString("movie_title_kr"));
+				 tmp.setMovie_year(rs.getString("movie_year"));
+				 tmp.setMovie_genre(rs.getString("movie_genre"));
+				 list.add(tmp);
 			 }
 		} catch (Exception e) {
 			e.printStackTrace();
