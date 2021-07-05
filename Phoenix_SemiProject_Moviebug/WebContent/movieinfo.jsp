@@ -25,8 +25,8 @@
 	}
 	
 	.movieInfo-container{
-		width: 1000px;
-		height: 600px;
+		width: 1200px;
+		height: 400px;
 		margin: 0 auto;
 		overflow: hidden; /* 부모 높이를 잊어벼리기때문에 다시 높이를 생기게끔해주는 float 해제 기법 */
 	}
@@ -36,17 +36,17 @@
 	}
 	
 	.movieInfo_item.trailer{
-		width:500px;
-		height:600px;
+		width:600px;
+		height:400px;
 	}
-	.movieInfo_item>img{
+	.movieInfo_item>iframe{
 		width: 100%;
 		height: 100%;
 	}
 	
 	.movieInfo_item.detail{
-		width:500px;
-		height:600px;
+		width:600px;
+		height:400px;
 		border-style: solid;
 		border-width: 2px;
 	}
@@ -54,6 +54,12 @@
 	.btn-group{
 		width:100%;
 		height: 10%;
+	}
+	
+	li { font-size: 15px; line-height: 30px; }
+	
+	#rating {
+		text-align: center;
 	}
 	
 	
@@ -78,7 +84,10 @@
 		
 		<div class="movieInfo-container row align-items-center">
 			<div class="movieInfo_item trailer">
-				<img src="<%=dto.getMovie_image() %>"/>
+				<iframe src="<%=dto.getMovie_trailer() %>" 
+					title="YouTube video player" frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
 			</div>
 			<div class="movieInfo_item detail">
 				<div class="btn-group mt-1" role="group" aria-label="Basic outlined example">
@@ -87,7 +96,7 @@
 	  				<button id="btnThree" type="button" class="btn btn-outline-primary">유저 평점</button>
 				</div>
 				
-				<div id="movieInfo_wrapper">
+				<div class="mt-3" id="movieInfo_wrapper">
 					
 				</div>
 				
@@ -99,6 +108,7 @@
 		
 		
 	</div>
+	
 <script>
 	
 	document.querySelector("#btnOne").addEventListener("click",function(){
@@ -147,8 +157,10 @@
 	document.querySelector("#btnThree").addEventListener("click",function(){
 		const div=document.querySelector("#movieInfo_wrapper");
 		div.innerHTML="";
+		
 		const h1=document.createElement("h1");
-		h1.innerText="평점 : <%=dto.getMovie_rating()%> 점";
+		h1.setAttribute('id','rating');
+		h1.innerText="<%=dto.getMovie_rating()%> 점";
 		div.append(h1);
 	});
 	
