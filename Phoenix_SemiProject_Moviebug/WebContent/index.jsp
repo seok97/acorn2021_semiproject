@@ -24,6 +24,8 @@ pageEncoding="UTF-8"%>
     <jsp:include page="include/resource.jsp"></jsp:include>
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    
     
     <!-- 웹폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,7 +114,7 @@ pageEncoding="UTF-8"%>
       	</div>
         <div class="row">
           <div class="col">
-            <div class="row">
+            <div class="row row-cols-xs-2 row-cols-xxl-4">
         <!-- ****************************************** -->
         <%for(int i = 0 ; i<4; i++){ %>
               <div class="col">
@@ -150,7 +152,7 @@ pageEncoding="UTF-8"%>
       	</div>
         <div class="row">
           <div class="col">
-            <div class="row">
+            <div class="row row-cols-md-2">
               
          <!-- ****************************************** -->
 		        <%for(MovieDto dto: Top4List){ %>
@@ -246,7 +248,7 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
 
-      <jsp:include page="include/footer.jsp"></jsp:include>
     </div>
+      <jsp:include page="include/footer.jsp"></jsp:include>
   </body>
 </html>
