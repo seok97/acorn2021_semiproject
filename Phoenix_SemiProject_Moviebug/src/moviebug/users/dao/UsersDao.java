@@ -18,8 +18,8 @@ public class UsersDao {
 	}
 	
 	
-	// 전달된 이메일과 이름 정보 확인하는 메소드
-		public UsersDto getName(String email) {
+	// 인자로 전달된 아이디에 해당하는 정보를 리턴하는 메소드
+		public UsersDto getData(String email) {
 			UsersDto dto = null;
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -28,7 +28,7 @@ public class UsersDao {
 				// Connection 객체의 참조값 얻어오기
 				conn = new DbcpBean().getConn();
 				// 실행할 sql 문 작성
-				String sql = "SELECT name"
+				String sql = "SELECT pwd, name, addr, profile, regdate"
 						+ " FROM users"
 						+ " WHERE email = ?";
 				// PreparedStatement 객체의 참조값 얻어오기
@@ -41,6 +41,11 @@ public class UsersDao {
 				while (rs.next()) {
 					dto = new UsersDto();
 					dto.setName(rs.getString("name"));
+					dto.setPwd(rs.getString("pwd"));
+					dto.setEmail(email);
+					dto.setAddr(rs.getString("addr"));
+					dto.setProfile(rs.getString("profile"));
+					dto.setRegdate(rs.getString("regdate"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
