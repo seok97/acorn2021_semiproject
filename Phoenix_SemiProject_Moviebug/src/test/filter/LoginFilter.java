@@ -48,7 +48,7 @@ public class LoginFilter implements Filter{
       //1. 로그인을 했는지 로그인된 아이디를 읽어와 본다. (HttpSession 객체)
       HttpServletRequest req=(HttpServletRequest)request;
       HttpSession session=req.getSession();
-      String id=(String)session.getAttribute("id");
+      String id=(String)session.getAttribute("email");
       if(id != null) {
          //2. 만일 로그인을 했다면 관여 하지 않고 요청의 흐름을 이어간다. (FilterChain 객체)
          chain.doFilter(request, response);
