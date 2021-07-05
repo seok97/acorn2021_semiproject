@@ -65,7 +65,7 @@
 		
 		<div class="clear-fix d-flex flex-column bd-highlight">
 		
-			<form action="name_update.jsp">
+			<form action="name_update.jsp" method="post">
 				<div class="p-2 bd-highlight">
 					<p class="float-start">이름</p>
 					<p>
@@ -84,7 +84,7 @@
       		</form>
 
 		
-		<form action="addr_update.jsp">
+		<form action="addr_update.jsp" method="post">
 			<div class="p-2 bd-highlight">
 				<p class="float-start">주소</p>
 				<p>
@@ -95,15 +95,15 @@
 			</div>
       		 <div class="collapse" id="addr">
       		 	 <div class="d-inline-flex p-2 bd-highlight">
-         		 <label for="addr"></label>
-         		 <input type="text" id="addr" name="addr" value="<%=dto.getAddr()%>"/>
-         		 <button type="submit">저장</button>
-      		 	 </div>
+         		 	<label for="addr"></label>
+         		 	<input type="text" id="addr" name="addr" value="<%=dto.getAddr()%>"/>
+         		 	<button type="submit">저장</button>
+      		 	 </div> 	 
       		</div>
       	</form>
 
 
-			<form action="pwd_update.jsp" method="post">
+			<form action="pwd_update.jsp" method="post" id="myForm">
 				<div class="p-2 bd-highlight">
 					<p class="float-start">비밀번호</p>
 					<p>
@@ -113,19 +113,21 @@
 					</p>
 				</div>
 				<div class="collapse" id="pwd">
-					  <div class="card">
+					  <div class="card card-body">
 					   	<label class="control-label" for="pwd">현재 비밀번호</label>
 				        <input class="form-control mb-3" type="password" name="pwd" id="pwd"/>
-				        <div class="invalid-feedback">비밀번호를 확인 하세요.</div>
-					   	<label class="control-label" for="pwd">새 비밀번호</label>
-				        <input class="form-control" type="password" name="pwd" id="pwd"/>
-					   	<label class="control-label" for="pwd">새 비밀번호 확인</label>
-				        <input class="form-control" type="password" name="pwd" id="pwd"/>
-				        <div class="invalid-feedback">비밀번호를 확인 하세요.</div>
-				        <button class="m-3" type="submit">저장</button>
+				        
+					   	<label class="control-label" for="newPwd">새 비밀번호</label>
+				        <input class="form-control" type="password" name="newPwd" id="newPwd"/>
+				        
+					   	<label class="control-label" for="newPwd2">새 비밀번호 확인</label>
+				        <input class="form-control" type="password" id="newPwd2"/>
+				        
+				        <button type="submit">저장</button>
 					</div>
 				</div>
 			</form>
+			
 		</div>
 		
 		<form action="ajax_profile_upload.jsp" method="post" 
@@ -136,6 +138,18 @@
 	</div>
 <script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
 <script>
+
+	//폼에 submit 이벤트가 일어났을때 실행할 함수를 등록하고 
+	document.querySelector("#myForm").addEventListener("submit", function(e){
+	   let pwd1=document.querySelector("#newPwd").value;
+	   let pwd2=document.querySelector("#newPwd2").value;
+	   //새 비밀번호와 비밀번호 확인이 일치하지 않으면 폼 전송을 막는다.
+	   if(pwd1 != pwd2){
+	      alert("비밀번호를 확인 하세요!");
+	      e.preventDefault();//폼 전송 막기 
+	   }
+	});
+
    //프로필 이미지 링크를 클릭하면 
    document.querySelector("#profileLink").addEventListener("click", function(){
       // input type="file" 을 강제 클릭 시킨다. 

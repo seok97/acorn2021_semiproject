@@ -46,10 +46,6 @@
          </td>
       </tr>
       <tr>
-         <th>비밀번호</th>
-         <td><a href="pwd_updateform.jsp">수정하기</a></td>
-      </tr>
-      <tr>
          <th>이메일</th>
          <td><%=email %></td>
       </tr>
