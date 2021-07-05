@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <title>movieinfo.jsp</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" />
 <style>
 
 	.genre-container{
@@ -63,16 +64,12 @@
 		text-align: center;
 		margin-top: 10%;
 	}
-	
-	
-	
 </style>
 </head>
 <body>
+<jsp:include page="/include/navbar.jsp"></jsp:include>
+	
 	<div class="container">
-	
-	
-	
 		<div class="genre-container mb-3">
 			<p><%=dto.getMovie_genre() %></p>
 		</div>
