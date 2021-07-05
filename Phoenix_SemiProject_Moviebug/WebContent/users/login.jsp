@@ -33,7 +33,7 @@
 			session.setAttribute("email", email);
 			// 초 단위로 세션 유지시간을 설정할 수 있다. 
 			session.setMaxInactiveInterval(60*20);
-			UsersDto dto2 = UsersDao.getInstance().getName(email);
+			UsersDto dto2 = UsersDao.getInstance().getData(email);
 			%>
 			
 		<p>

@@ -11,32 +11,56 @@
 <div class="container">
    <h1 class=text-center>회원 가입</h1>
    <form class="row g-3" action="signup.jsp" method="post" id="myForm">
-      <div class="col-12">
+      <div class="col-12 p-3">
          <label class="control-label" for="name">이름</label>
          <input class="form-control" type="text" name="name" id="name"/>
       </div>
-      <div class="col-12">
+      <div class="col-12 p-3">
          <label class="control-label" for="email">이메일</label>
          <input class="form-control" type="text" name="email" id="email"/>
          <small class="form-text text-muted">ex) moviebug@xxx.xxx</small>
          <div class="invalid-feedback">사용할 수 없는 이메일입니다.</div>
       </div>
-      <div class="col-12">
+      <div class="col-12 p-3">
          <label class="control-label" for="pwd">비밀번호</label>
          <input class="form-control" type="password" name="pwd" id="pwd"/>
          <small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
          <div class="invalid-feedback">비밀번호를 확인 하세요.</div>
       </div>
-      <div class="col-12">
+      <div class="col-12 p-3">
          <label class="control-label" for="pwd2">비밀번호 확인</label>
          <input class="form-control" type="password" name="pwd2" id="pwd2"/>
       </div>
-      <div class="col-12">
+      <div class="col-12 p-3">
          <label class="control-label" for="addr">주소</label>
          <input class="form-control" type="text" name="addr" id="addr"/>
       </div>
            
       <button class="btn btn-primary" type="submit">가입</button>
+      
+      <div class="">
+	      <div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+			  <label class="form-check-label" for="flexCheckDefault">
+			    텀블벅 이용 약관동의
+			  </label>
+			  <a class="float-end" href="">내용보기</a>
+		  </div>
+		  <div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+			  <label class="form-check-label" for="flexCheckChecked">
+			    개인정보 수집 이용 동의
+			   </label>
+			   <a class="float-end" href="">내용보기</a>
+	      </div>
+		 
+		  <div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+			  <label class="form-check-label" for="flexCheckChecked">
+			   만 14세 이상입니다.
+			  </label>
+	      </div>
+      </div>
    </form>
 </div>
 <script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
