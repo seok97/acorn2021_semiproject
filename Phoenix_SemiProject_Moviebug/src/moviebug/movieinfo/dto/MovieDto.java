@@ -1,6 +1,7 @@
 package moviebug.movieinfo.dto;
 
 public class MovieDto {
+
    private int movie_num;
    private String movie_title_kr;
    private String movie_title_eng;
@@ -120,3 +121,7 @@ public void setMovie_director(String movie_director) {
 }
    
 }
+
+
+
+
