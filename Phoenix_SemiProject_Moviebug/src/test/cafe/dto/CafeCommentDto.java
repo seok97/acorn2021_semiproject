@@ -1,98 +1,99 @@
 package test.cafe.dto;
 
 public class CafeCommentDto {
-	private int num;
-	private String writer;
-	private String content;
-	private String target_id;
-	private int ref_group;
-	private int comment_group;
-	private String deleted;
-	private String regdate;
+	private int qna_comment_idx;
+	private String qna_comment_writer;
+	private String qna_comment_content;
+	private String qna_comment_target_id;
+	private int qna_comment_ref_group;
+	private int qna_comment_group;
+	private String qna_comment_deleted;
+	private String qna_comment_regdate;
 	private String profile;
 	private int StartRowNum;
 	private int EndRowNum;
 	
 	public CafeCommentDto() {}
 
-	public CafeCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
-			String deleted, String regdate, String profile, int startRowNum, int endRowNum) {
+	public CafeCommentDto(int qna_comment_idx, String qna_comment_writer, String qna_comment_content,
+			String qna_comment_target_id, int qna_comment_ref_group, int qna_comment_group, String qna_comment_deleted,
+			String qna_comment_regdate, String profile, int startRowNum, int endRowNum) {
 		super();
-		this.num = num;
-		this.writer = writer;
-		this.content = content;
-		this.target_id = target_id;
-		this.ref_group = ref_group;
-		this.comment_group = comment_group;
-		this.deleted = deleted;
-		this.regdate = regdate;
+		this.qna_comment_idx = qna_comment_idx;
+		this.qna_comment_writer = qna_comment_writer;
+		this.qna_comment_content = qna_comment_content;
+		this.qna_comment_target_id = qna_comment_target_id;
+		this.qna_comment_ref_group = qna_comment_ref_group;
+		this.qna_comment_group = qna_comment_group;
+		this.qna_comment_deleted = qna_comment_deleted;
+		this.qna_comment_regdate = qna_comment_regdate;
 		this.profile = profile;
 		StartRowNum = startRowNum;
 		EndRowNum = endRowNum;
 	}
 
-	public int getNum() {
-		return num;
+	public int getQna_comment_idx() {
+		return qna_comment_idx;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setQna_comment_idx(int qna_comment_idx) {
+		this.qna_comment_idx = qna_comment_idx;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getQna_comment_writer() {
+		return qna_comment_writer;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setQna_comment_writer(String qna_comment_writer) {
+		this.qna_comment_writer = qna_comment_writer;
 	}
 
-	public String getContent() {
-		return content;
+	public String getQna_comment_content() {
+		return qna_comment_content;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setQna_comment_content(String qna_comment_content) {
+		this.qna_comment_content = qna_comment_content;
 	}
 
-	public String getTarget_id() {
-		return target_id;
+	public String getQna_comment_target_id() {
+		return qna_comment_target_id;
 	}
 
-	public void setTarget_id(String target_id) {
-		this.target_id = target_id;
+	public void setQna_comment_target_id(String qna_comment_target_id) {
+		this.qna_comment_target_id = qna_comment_target_id;
 	}
 
-	public int getRef_group() {
-		return ref_group;
+	public int getQna_comment_ref_group() {
+		return qna_comment_ref_group;
 	}
 
-	public void setRef_group(int ref_group) {
-		this.ref_group = ref_group;
+	public void setQna_comment_ref_group(int qna_comment_ref_group) {
+		this.qna_comment_ref_group = qna_comment_ref_group;
 	}
 
-	public int getComment_group() {
-		return comment_group;
+	public int getQna_comment_group() {
+		return qna_comment_group;
 	}
 
-	public void setComment_group(int comment_group) {
-		this.comment_group = comment_group;
+	public void setQna_comment_group(int qna_comment_group) {
+		this.qna_comment_group = qna_comment_group;
 	}
 
-	public String getDeleted() {
-		return deleted;
+	public String getQna_comment_deleted() {
+		return qna_comment_deleted;
 	}
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
+	public void setQna_comment_deleted(String qna_comment_deleted) {
+		this.qna_comment_deleted = qna_comment_deleted;
 	}
 
-	public String getRegdate() {
-		return regdate;
+	public String getQna_comment_regdate() {
+		return qna_comment_regdate;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setQna_comment_regdate(String qna_comment_regdate) {
+		this.qna_comment_regdate = qna_comment_regdate;
 	}
 
 	public String getProfile() {
@@ -118,5 +119,5 @@ public class CafeCommentDto {
 	public void setEndRowNum(int endRowNum) {
 		EndRowNum = endRowNum;
 	}
-	
+
 }

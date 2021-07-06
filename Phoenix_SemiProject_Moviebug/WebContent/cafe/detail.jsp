@@ -1,3 +1,6 @@
+<%@page import="test.cafe.dao.CafeCommentDao"%>
+<%@page import="java.util.List"%>
+<%@page import="test.cafe.dto.CafeCommentDto"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="test.users.dao.UsersDao"%>
 <%@page import="test.cafe.dao.CafeDao"%>
@@ -20,6 +23,7 @@
    }
    //특수기호를 인코딩한 키워드를 미리 준비한다. 
    String encodedK=URLEncoder.encode(keyword);
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -53,12 +57,23 @@
          <td><%=dto.getQna_regdate() %></td>
       </tr>
       <tr>
-         <td colspan="2"><textarea><%=dto.getQna_content() %></textarea></td>
-      </tr>
+		<td colspan="2">
+			<div class="content"><%=dto.getQna_content() %></div>
+		</td>
+	</tr>
    </table>
    <ul>
       <li><a href="list.jsp">목록보기</a></li>
+      <%
+      String email=(String)session.getAttribute("email");
+      if(email != null){
+  	  String name=UsersDao.getInstance().getData(email).getName();
+      %>
+      <%if(dto.getQna_writer().equals(name)){ %>
       <li><a href="private/updateform.jsp?num=<%=dto.getQna_idx() %>">수정</a></li>
       <li><a href="private/delete.jsp?num=<%=dto.getQna_idx() %>">삭제</a></li>
+      <% } 
+      }
+      %>
    </ul>
 </div>
