@@ -126,11 +126,6 @@ nav button{
 	height: 100%;
 }
 
-@media (max-width: 991px){
-	#nav_search_input {
-	    display: none;
-	}
-}
 
 @media (max-width: 767px){
 	.nav_login{
