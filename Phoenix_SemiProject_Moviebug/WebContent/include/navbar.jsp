@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="nav_user flex_box">
               <div class="nav_login">
-              <%if(isLogin) {%>
+              <%if(!isLogin) {%>
               	<a href="<%= request.getContextPath()%>/users/loginform.jsp">로그인</a>/<a href="<%= request.getContextPath()%>/users/signform.jsp">회원가입</a>
               	<%}else{ %>
               		내정보

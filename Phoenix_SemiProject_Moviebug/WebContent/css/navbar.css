@@ -89,6 +89,7 @@ nav button{
 }
 
 .nav_search, .nav_user{
+	justify-content: center;
 	align-items: center;
 	color: rgb(109, 109, 109);
 }
@@ -114,6 +115,9 @@ nav button{
 
 .profile_btn{
 	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .profile_btn img{
