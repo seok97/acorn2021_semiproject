@@ -35,40 +35,55 @@
          <label class="control-label" for="addr">주소</label>
          <input class="form-control" type="text" name="addr" id="addr"/>
       </div>
-           
-      <button class="btn btn-primary" type="submit">가입</button>
-      
+                   
       <div class="">
 	      <div class="form-check">
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-			  <label class="form-check-label" for="flexCheckDefault">
+			  <input class="form-check-input" type="checkbox" value="" name="agree" id="signup_check1">
+			  <label class="form-check-label" for="signup_check1">
 			    텀블벅 이용 약관동의
 			  </label>
 			  <a class="float-end" href="">내용보기</a>
 		  </div>
 		  <div class="form-check">
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-			  <label class="form-check-label" for="flexCheckChecked">
+			  <input class="form-check-input" type="checkbox" value="" name="agree" id="signup_check2">
+			  <label class="form-check-label" for="signup_check2">
 			    개인정보 수집 이용 동의
 			   </label>
 			   <a class="float-end" href="">내용보기</a>
 	      </div>
 		 
 		  <div class="form-check">
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-			  <label class="form-check-label" for="flexCheckChecked">
+			  <input class="form-check-input" type="checkbox" value="" name="agree" id="signup_check3">
+			  <label class="form-check-label" for="signup_check3">
 			   만 14세 이상입니다.
 			  </label>
 	      </div>
       </div>
    </form>
+   <button class="btn btn-primary" type="submit" id="signBtn">가입</button>
 </div>
 <script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
-<script>
+<script type="text/javascript">
    //아이디, 비밀번호, 이메일의 유효성 여부를 관리한 변수 만들고 초기값 대입
    let isPwdValid=false;
    let isEmailValid=false;
+   let isChecked = false;
+   
+   document.querySelector("#signup_check1").addEventListener("click", function{
+	   let chk1 = document.querySelector("#signup_check1").checked;
+   });
+   document.querySelector("#signup_check2").addEventListener("click", function{
+	   let chk2 = document.querySelector("#signup_check1").checked;
+   }); 
+   document.querySelector("#signup_check3").addEventListener("click", function{
+	   let chk3 = document.querySelector("#signup_check1").checked;
+   });    
 
+   if(chk1 && chk2 && chk3) {
+	   isChecked = true;
+   }
+
+   
    //아이디를 입력했을때(input) 실행할 함수 등록 
    document.querySelector("#email").addEventListener("input", function(){
       //일단 is-valid,  is-invalid 클래스를 제거한다.
@@ -138,18 +153,23 @@
    document.querySelector("#pwd2").addEventListener("input", checkPwd);
    
    //폼에 submit 이벤트가 발생했을때 실행할 함수 등록
-   document.querySelector("#myForm").addEventListener("submit", function(e){
+   document.querySelector("#signBtn").addEventListener("click", function(e){
+	   e.preventDefault();
+	  
+	   // 폼 전송부터 막고 검사를 하고 submit 발생
+	   
       /*
-         입력한 아이디, 비밀번호, 이메일의 유효성 여부를 확인해서 하나라도 유효 하지 않으면
-         e.preventDefault(); 
-         가 수행 되도록 해서 폼의 제출을 막아야 한다. 
+  		 유효성 검사를 통해 하나라도 통과하지 못하면 return false 다 통과하면 submit
       */
       //폼 전체의 유효성 여부 알아내기 
-      let isFormValid = isPwdValid && isEmailValid;
+       	  
+      let isFormValid = isPwdValid && isEmailValid && isChecked;
       if(!isFormValid){//폼이 유효하지 않으면
          //폼 전송 막기 
-         e.preventDefault();
-      }   
+         return false;
+      } else {
+    	  document.querySelector("#myForm").submit();
+      }
    });
 </script>
 </body>
