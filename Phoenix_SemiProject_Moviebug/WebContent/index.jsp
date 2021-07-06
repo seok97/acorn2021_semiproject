@@ -9,7 +9,6 @@ pageEncoding="UTF-8"%>
 	/* String email = (String)session.getAttribute("email"); */
 	String email = request.getParameter("email");
 	if(email != null) isLogin = true;
-
 	// 메인 carousel 최신 영화 3개 리스트 가져오기
 	List<MovieDto> NewMovieList = MovieDao.getInstance().getNewMovies();
 	

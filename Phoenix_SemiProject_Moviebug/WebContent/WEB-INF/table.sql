@@ -14,13 +14,28 @@ CREATE TABLE board_qna(
 	qna_writer VARCHAR2(100) NOT NULL, --작성자 (로그인된 아이디)
 	qna_title VARCHAR2(100) NOT NULL, --제목
 	qna_content CLOB, --글 내용
-	qna_file VARCHAR2(1000) --첨부파일
+	qna_file VARCHAR2(1000), --첨부파일
 	qna_regdate DATE --글 작성일
 );
+
 -- QNA 게시글의 번호를 얻어낼 시퀀스
 CREATE SEQUENCE board_qna_seq;
 
+-- QNA 게시글의 댓글을 저장할 테이블
+CREATE TABLE board_qna_comment(
+   qna_comment_idx NUMBER PRIMARY KEY, --댓글의 글번호
+   qna_comment_writer VARCHAR2(100), --댓글 작성자의 아이디
+   qna_comment_content VARCHAR2(2000), --댓글 내용
+   qna_comment_target_id VARCHAR2(100), --댓글의 대상자 아이디
+   qna_comment_ref_group NUMBER,
+   qna_comment_group NUMBER,
+   qna_comment_deleted CHAR(3) DEFAULT 'no',
+   qna_comment_regdate DATE
+);
+-- QNA 댓글의 번호를 얻어낼 시퀀스
+CREATE SEQUENCE board_qna_comment_seq;
 
+-- 영화 댓글을 저장할 테이블
 CREATE TABLE board_comment(
    comment_idx NUMBER PRIMARY KEY, --댓글의 글번호
    comment_writer VARCHAR2(100), --댓글 작성자의 아이디
@@ -31,7 +46,7 @@ CREATE TABLE board_comment(
    comment_deleted CHAR(3) DEFAULT 'no',
    comment_regdate DATE
 );
--- 댓글 번호를 얻어낼 시퀀스
+-- 영화 댓글 번호를 얻어낼 시퀀스
 CREATE SEQUENCE board_comment_seq;
 
 
@@ -55,3 +70,4 @@ CREATE TABLE movie_info(
 
 -- 영화 정보 번호를 얻어낼 시퀀스
 CREATE SEQUENCE movie_info_seq;
+

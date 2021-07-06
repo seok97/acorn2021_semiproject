@@ -1,15 +1,31 @@
 package moviebug.users.dto;
 
 public class UsersDto {
+	private String name;
 	private String pwd;
 	private String email;
+	private String addr;
 	private String profile;
 	private String regdate;
-	private String name;
-	private String addr;
 	
-	public UsersDto() {
-		
+	public UsersDto() {}
+
+	public UsersDto(String name, String pwd, String email, String addr, String profile, String regdate) {
+		super();
+		this.name = name;
+		this.pwd = pwd;
+		this.email = email;
+		this.addr = addr;
+		this.profile = profile;
+		this.regdate = regdate;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPwd() {
@@ -28,6 +44,14 @@ public class UsersDto {
 		this.email = email;
 	}
 
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
 	public String getProfile() {
 		return profile;
 	}
@@ -42,22 +66,6 @@ public class UsersDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddr() {
-		return addr;
-	}
-
-	public void setAddr(String addr) {
-		this.addr = addr;
 	}
 
 	
