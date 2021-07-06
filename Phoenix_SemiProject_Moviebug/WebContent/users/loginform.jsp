@@ -31,6 +31,8 @@
 			</div>
 			<button type="submit">로그인</button>
 		</form>
+		
+		<h3>아이디가 없으신가요? <a href="<%= request.getContextPath()%>/users/signupform.jsp">가입하기</a></h3>
 	</div>
 	
 </body>
