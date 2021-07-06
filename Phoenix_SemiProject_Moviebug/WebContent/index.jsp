@@ -38,6 +38,8 @@ pageEncoding="UTF-8"%>
     </jsp:include>
 
     <div class="container index_content">
+    <!-- search modal -->
+
       <div class="row index_content01">
         <div
           id="carouselExampleCaptions"
