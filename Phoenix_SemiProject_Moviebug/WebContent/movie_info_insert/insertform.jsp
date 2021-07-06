@@ -39,7 +39,7 @@
 				<input class="form-control" type="text" name="movie_nation" id="movie_nation" />
 			</div>
 			<div class="mb-3">
-				<label class="form-label" for="movie_year">영화 제작년도</label>
+				<label class="form-label" for="movie_year">영화 개봉년도</label>
 				<input class="form-control" type="text" name="movie_year" id="movie_year" />
 			</div>
 			<div class="mb-3">
