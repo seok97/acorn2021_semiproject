@@ -50,6 +50,20 @@ CREATE TABLE board_comment(
 CREATE SEQUENCE board_comment_seq;
 
 
+CREATE TABLE qna_board_comment(
+   qna_comment_idx NUMBER PRIMARY KEY, --댓글의 글번호
+   qna_comment_writer VARCHAR2(100), --댓글 작성자의 아이디
+   qna_comment_content VARCHAR2(2000), --댓글 내용
+   qna_comment_target_id VARCHAR2(100), --댓글의 대상자 아이디
+   qna_comment_ref_group NUMBER,
+   qna_comment_group NUMBER,
+   qna_comment_deleted CHAR(3) DEFAULT 'no',
+   qna_comment_regdate DATE
+);
+-- 댓글 번호를 얻어낼 시퀀스
+CREATE SEQUENCE board_comment_seq;
+
+
 -- 영화 정보를 저장할 테이블
 CREATE TABLE movie_info(
 	movie_num NUMBER PRIMARY KEY not null, --영화 번호
