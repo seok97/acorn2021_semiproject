@@ -1,8 +1,8 @@
+<%@page import="moviebug.users.dao.UsersDao"%>
 <%@page import="test.cafe.dao.CafeCommentDao"%>
 <%@page import="java.util.List"%>
 <%@page import="test.cafe.dto.CafeCommentDto"%>
 <%@page import="java.net.URLEncoder"%>
-<%@page import="test.users.dao.UsersDao"%>
 <%@page import="test.cafe.dao.CafeDao"%>
 <%@page import="test.cafe.dto.CafeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

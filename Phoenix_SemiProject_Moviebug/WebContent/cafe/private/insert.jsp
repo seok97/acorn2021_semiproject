@@ -1,4 +1,4 @@
-<%@page import="test.users.dao.UsersDao"%>
+<%@page import="moviebug.users.dao.UsersDao"%>
 <%@page import="test.cafe.dao.CafeDao"%>
 <%@page import="test.cafe.dto.CafeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

@@ -90,9 +90,10 @@ pageEncoding="UTF-8"%>
             <div class="nav_user flex_box">
               <div class="nav_login">
               <%if(!isLogin) {%>
-              	<a href="<%= request.getContextPath()%>/users/loginform.jsp">로그인</a>/<a href="<%= request.getContextPath()%>/users/signupform.jsp">회원가입</a>
+              	<a href="<%= request.getContextPath()%>/users/loginform.jsp">로그인</a>/
+              	<a href="<%= request.getContextPath()%>/users/loginform.jsp">회원가입</a>
               	<%}else{ %>
-              		내정보
+              		 <%=dto.getName() %>
               	<%} %>
               </div>
               <div class="profile">
@@ -100,14 +101,17 @@ pageEncoding="UTF-8"%>
               	<%if(isLogin){ %>
               	<div class="btn-group">
 				  <button type="button" class="profile_btn" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-				  
-		            <img src="<%=request.getContextPath() %>/<%=dto.getProfile() %>" />
-					
+				  	<!-- 프로필사진없을때 분기 추가해야됨 -->
+				  	<% if(dto.getProfile() != null){%>
+		            	<img src="<%=request.getContextPath() %>/<%=dto.getProfile()%>" />
+					<%}else{ %>
+						<img src="<%=request.getContextPath()%>/images/bigdata.jpg"/>
+					<%} %>
 				  </button>
               	
 				  <ul class="dropdown-menu dropdown-menu-lg-end">
-				    <li><button class="dropdown-item" type="button">내정보</button></li>
-				    <li><button class="dropdown-item" type="button">로그아웃</button></li>
+				    <li><a href="<%=request.getContextPath()%>/users/private/info.jsp"><button class="dropdown-item" type="button">내정보</button></a></li>
+				    <li><a href="<%=request.getContextPath()%>/users/logout.jsp"><button class="dropdown-item" type="button">로그아웃</button></a></li>
 				  </ul>
 				 
 				</div>
