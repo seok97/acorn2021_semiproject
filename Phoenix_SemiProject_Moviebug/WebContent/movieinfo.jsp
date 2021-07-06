@@ -7,7 +7,7 @@
     pageEncoding="UTF-8"%>
 <%
 	//자세히 보여줄 글번호를 읽어온다. 
-	int movie_num=603;
+	int movie_num=Integer.parseInt(request.getParameter("movie_num"));
 	//로그인된 아이디 (로그인을 하지 않았으면 null 이다)
 	String email=(String)session.getAttribute("email");
 	//로그인 여부
@@ -292,20 +292,20 @@
                </dl>   
                <form id="reForm<%=tmp.getComment_idx() %>" class="animate__animated comment-form re-insert-form" 
                   action="movieinfo/private/comment_insert.jsp" method="post">
-                  <input type="hidden" name="ref_group"
+                  <input type="hidden" name="comment_ref_group"
                      value="<%=dto.getMovie_num()%>"/>
-                  <input type="hidden" name="target_id"
+                  <input type="hidden" name="comment_target_id"
                      value="<%=tmp.getComment_writer()%>"/>
                   <input type="hidden" name="comment_group"
                      value="<%=tmp.getComment_group()%>"/>
-                  <textarea name="content"></textarea>
+                  <textarea name="comment_content"></textarea>
                   <button type="submit">등록</button>
                </form>   
                <%if(tmp.getComment_writer().equals(email)){ %>   
                <form id="updateForm<%=tmp.getComment_idx() %>" class="comment-form update-form" 
                   action="movieinfo/private/comment_update.jsp" method="post">
-                  <input type="hidden" name="num" value="<%=tmp.getComment_idx() %>" />
-                  <textarea name="content"><%=tmp.getComment_content() %></textarea>
+                  <input type="hidden" name="comment_idx" value="<%=tmp.getComment_idx() %>" />
+                  <textarea name="comment_content"><%=tmp.getComment_content() %></textarea>
                   <button type="submit">수정</button>
                </form>
                <%} %>                  
@@ -326,7 +326,7 @@
       <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
       <input type="hidden" name="target_id" value="<%=dto.getMovie_writer()%>"/>
       
-      <textarea name="content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
+      <textarea name="comment_content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
       <button type="submit">등록</button>
    </form>
 </div>
@@ -344,7 +344,7 @@
             e.preventDefault();
             //로그인 폼으로 이동 시킨다.
             location.href=
-               "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/movieinfo.jsp?num=<%=movie_num%>";
+               "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/movieinfo.jsp?movie_num=<%=movie_num%>";
          }
       });
    
@@ -443,7 +443,7 @@
             const isDelete=confirm("댓글을 삭제 하시겠습니까?");
             if(isDelete){
                // gura_util.js 에 있는 함수들 이용해서 ajax 요청
-               ajaxPromise("movieinfo/private/comment_delete.jsp", "post", "num="+num)
+               ajaxPromise("movieinfo/private/comment_delete.jsp", "post", "comment_idx="+num)
                .then(function(response){
                   return response.json();
                })
@@ -469,7 +469,7 @@
                const isMove=confirm("로그인이 필요 합니다. 로그인 페이지로 이동 하시겠습니까?");
                if(isMove){
                   location.href=
-                     "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/movieinfo.jsp?num=<%=movie_num%>";
+                     "${pageContext.request.contextPath}/users/loginform.jsp?url=${pageContext.request.contextPath}/movieinfo.jsp?movie_num=<%=movie_num%>";
                }
                return;
             }
@@ -526,8 +526,8 @@
                      특정문서의 참조값.querySelector() 는 해당 문서 객체의 자손 요소 중에서
                      특정 요소의 참조값을 찾는 기능
                   */
-                  const num=form.querySelector("input[name=num]").value;
-                  const content=form.querySelector("textarea[name=content]").value;
+                  const num=form.querySelector("input[name=comment_idx]").value;
+                  const content=form.querySelector("textarea[name=comment_content]").value;
                   //수정폼에 입력한 value 값을 pre 요소에도 출력하기 
                   document.querySelector("#pre"+num).innerText=content;
                   form.style.display="none";
