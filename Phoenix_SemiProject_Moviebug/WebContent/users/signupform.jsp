@@ -3,51 +3,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>/users/signup_form.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
-	.container--form {
-		width: 400px;
-		height: auto;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
+
+	html, body {
+		width: 100%;
+		height: 100%;
 	}
+	
+	.container {
+		width: 100%;
+		height: 100%;
+		
+	}
+			
+	.container--formborder {
+		display: flex;
+		border: 1px solid #cecece;
+	}
+	
+	.container--form {
+		width: 600px;
+		height: auto;	
+		margin: auto;
+	}
+	
+	h1 {
+		padding: 32px;
+	}
+	
+	
 </style>
 </head>
 <body>
+
 <div class="container">
 
-   	<h1 class=text-center>회원 가입</h1>
-
-   	 <div class="container--form">
-	   <form class="row g-3" action="signup.jsp" method="post" id="myForm">
-	      <div class="col-12">
-	         <label class="control-label" for="name">이름</label>
-	         <input class="form-control" type="text" name="name" id="name"/>
-	      </div>
-	      <div class="col-12">
-	         <label class="control-label" for="email">이메일</label>
-	         <input class="form-control" type="text" name="email" id="email"/>
-	         <small class="form-text text-muted">ex) moviebug@xxx.xxx</small>
-	         <div class="invalid-feedback">사용할 수 없는 이메일입니다.</div>
-	      </div>
-	      <div class="col-12">
-	         <label class="control-label" for="pwd">비밀번호</label>
-	         <input class="form-control" type="password" name="pwd" id="pwd"/>
-	         <small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
-	         <div class="invalid-feedback">비밀번호를 확인 하세요.</div>
-	      </div>
-	      <div class="col-12">
-	         <label class="control-label" for="pwd2">비밀번호 확인</label>
-	         <input class="form-control" type="password" name="pwd2" id="pwd2"/>
-	      </div>
-	      <div class="col-12">
-	         <label class="control-label" for="addr">주소</label>
-	         <input class="form-control" type="text" name="addr" id="addr"/>
-	      </div>
-	                   
+	<div class="container--formborder">
+   	 	<div class="container--form">
+   	
+   	 	<h1>회원 가입</h1>
+   	 	
+		   <form class="row g-3" action="signup.jsp" method="post" id="myForm">
+		      <div class="col-12">
+		         <label class="control-label" for="name">이름</label>
+		         <input class="form-control" type="text" name="name" id="name"/>
+		      </div>
+		      <div class="col-12">
+		         <label class="control-label" for="email">이메일</label>
+		         <input class="form-control" type="text" name="email" id="email"/>
+		         <small class="form-text text-muted">ex) moviebug@xxx.xxx</small>
+		         <div class="invalid-feedback">사용할 수 없는 이메일입니다.</div>
+		      </div>
+		      <div class="col-12">
+		         <label class="control-label" for="pwd">비밀번호</label>
+		         <input class="form-control" type="password" name="pwd" id="pwd"/>
+		         <small class="form-text text-muted">5글자~10글자 이내로 입력하세요.</small>
+		         <div class="invalid-feedback">비밀번호를 확인 하세요.</div>
+		      </div>
+		      <div class="col-12">
+		         <label class="control-label" for="pwd2">비밀번호 확인</label>
+		         <input class="form-control" type="password" name="pwd2" id="pwd2"/>
+		      </div>
+		      <div class="col-12">
+		         <label class="control-label" for="addr">주소</label>
+		         <input class="form-control" type="text" name="addr" id="addr"/>
+		      </div>
+		                   
 		      <div class="signup_check">
 				  <input class="form-check-input" type="checkbox" value="true"
 				  onclick="toggle1(this)" name="agree" id="signup_check1">
@@ -97,9 +121,10 @@
 				   만 14세 이상입니다.
 				  </label>
 		      </div>
-	          <button class="btn btn-primary" type="submit" id="signBtn">가입</button>
+	          <button class="btn btn-primary m-3" type="submit" id="signBtn">가입</button>
 	   </form>
-  	</div>
+  	 </div>
+  </div>
 
 <script src="<%=request.getContextPath() %>/js/gura_util.js"></script>
 <script type="text/javascript">
@@ -216,16 +241,18 @@
   		 유효성 검사를 통해 하나라도 통과하지 못하면 return false 다 통과하면 submit
       */
       
-      //폼 전체의 유효성 여부 알아내기 
       if(result1 == "true" && result2 == "true" && result3 == "true") {
-    	  isChecked = true;
-      } else {
-    	  isChecked = false;
-      }
+     	  isChecked = true;
+       } else {
+     	  isChecked = false;
+       }
+      
+      //폼 전체의 유효성 여부 알아내기    
       
       let isFormValid = isPwdValid && isEmailValid && isChecked;
       if(!isFormValid){//폼이 유효하지 않으면
          // 유효성 검사가 하나라도 맞지 않으면 return false;
+      	 alert("다시 확인해주세요.");
          return false;
       } else {
     	  document.querySelector("#myForm").submit();

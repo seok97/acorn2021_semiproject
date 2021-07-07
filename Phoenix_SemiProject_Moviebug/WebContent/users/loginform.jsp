@@ -13,26 +13,72 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="../include/resource.jsp"></jsp:include>
+<style>
+
+	html, body {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.container {
+		width: 100%;
+		height: 100%;
+		
+	}
+			
+	.container--formborder {
+		display: flex;
+		border: 1px solid #cecece;
+	}
+	
+	.container--form {
+		width: 600px;
+		height: auto;	
+		margin: auto;
+	}
+	
+	h1 {
+		padding: 32px;
+	}
+	
+	button {
+		width: 600px;
+	}
+	
+	p {
+		color: #6e6e6e;
+		text-align: center;
+	}
+	
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<div class="container">
-		<h1>로그인 폼 입니다.</h1>
-		<form action="login.jsp" method="post">
-			<input type="hidden" name="url" value="<%=url %>" />
-			<div>
-				<label for="email">이메일</label>
-				<input type="text" name="email" id="email" />
+		<div class="container--formborder">
+			<div class="container--form">
+				<form action="login.jsp" method="post">
+					<h1>로그인</h1>
+					<input type="hidden" name="url" value="<%=url %>" />
+					<div>
+						<label for="email">이메일</label>
+						<input class="form-control m-3" type="text" name="email" id="email" 
+								placeholder="이메일을 입력하세요."/>
+					</div>
+					<div>
+						<label for="pwd">비밀번호</label>
+						<input class="form-control m-3" type="password" name="pwd" id="pwd"
+								placeholder="비밀번호를 입력하세요."  />
+					</div>
+					<button class="btn btn-primary m-3" type="submit">로그인</button>
+					<div class="signup">
+						<p>아직 계정이 없으신가요? <a href="<%= request.getContextPath()%>/users/signupform.jsp">가입하기</a></p>
+					</div>
+				</form>
 			</div>
-			<div>
-				<label for="pwd">비밀번호</label>
-				<input type="password" name="pwd" id="pwd" />
-			</div>
-			<button type="submit">로그인</button>
-		</form>
-		
-		<h3>아이디가 없으신가요? <a href="<%= request.getContextPath()%>/users/signupform.jsp">가입하기</a></h3>
+		</div>
 	</div>
 	
 </body>
