@@ -1,11 +1,33 @@
+<%@page import="moviebug.movieinfo.dao.MovieDao"%>
+<%@page import="moviebug.movieinfo.dto.MovieDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	// 로그인 상태 확인
+	boolean isLogin = false;
+	String email = (String)session.getAttribute("email"); 
+	if(email != null) isLogin = true;
+	// 메인 carousel 최신 영화 3개 리스트 가져오기
+	List<MovieDto> NewMovieList = MovieDao.getInstance().getNewMovies();
+	
+	// 평점순위 4개 영화 리스트 가져오기
+	List<MovieDto> Top4List = MovieDao.getInstance().getTop4ResList();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
 <title>/users/signup_form.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
+<link rel="stylesheet" type="text/css" href="../css/navbar.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+
+ <!-- 웹폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&display=swap" rel="stylesheet">
 <style>
 
 	html, body {
@@ -34,13 +56,18 @@
 		padding: 32px;
 	}
 	
-	
+	.signup_check > a {
+		color: #0000ff;
+	}
 </style>
 </head>
 <body>
 
 <div class="container">
-
+ <jsp:include page="../include/navbar.jsp"> 
+    	<jsp:param value="<%=email != null ? email:null %>" name="email"/>
+    </jsp:include>
+    
 	<div class="container--formborder">
    	 	<div class="container--form">
    	
@@ -121,7 +148,7 @@
 				   만 14세 이상입니다.
 				  </label>
 		      </div>
-	          <button class="btn btn-primary m-3" type="submit" id="signBtn">가입</button>
+	          <button class="btn btn-primary mb-3" type="submit" id="signBtn">가입</button>
 	   </form>
   	 </div>
   </div>
