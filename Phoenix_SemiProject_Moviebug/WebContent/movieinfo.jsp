@@ -324,7 +324,7 @@
       <!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
       <input type="hidden" name="comment_ref_group" value="<%=movie_num%>"/>
       <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
-      <input type="hidden" name="target_id" value="<%=dto.getMovie_writer()%>"/>
+      <input type="hidden" name="comment_target_id" value="<%=dto.getMovie_writer()%>"/>
       
       <textarea name="comment_content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
       <button type="submit">등록</button>
@@ -393,7 +393,7 @@
             "pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다. 
          */
          ajaxPromise("movieinfo/ajax_comment_list.jsp","get",
-               "pageNum="+currentPage+"&num=<%=movie_num%>")
+               "pageNum="+currentPage+"&movie_num=<%=movie_num%>")
          .then(function(response){
             //json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다.
             return response.text();
@@ -427,8 +427,8 @@
       for(let i=0; i<updateLinks.length; i++){
          updateLinks[i].addEventListener("click", function(){
             //click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
-            const num=this.getAttribute("data-num"); //댓글의 글번호
-            document.querySelector("#updateForm"+num).style.display="block";
+            const comment_idx=this.getAttribute("data-num"); //댓글의 글번호
+            document.querySelector("#updateForm"+comment_idx).style.display="block";
             
          });
       }
@@ -439,11 +439,11 @@
       for(let i=0; i<deleteLinks.length; i++){
          deleteLinks[i].addEventListener("click", function(){
             //click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
-            const num=this.getAttribute("data-num"); //댓글의 글번호
+            const comment_idx=this.getAttribute("data-num"); //댓글의 글번호
             const isDelete=confirm("댓글을 삭제 하시겠습니까?");
             if(isDelete){
                // gura_util.js 에 있는 함수들 이용해서 ajax 요청
-               ajaxPromise("movieinfo/private/comment_delete.jsp", "post", "comment_idx="+num)
+               ajaxPromise("movieinfo/private/comment_delete.jsp", "post", "comment_idx="+comment_idx)
                .then(function(response){
                   return response.json();
                })
@@ -451,7 +451,7 @@
                   //만일 삭제 성공이면 
                   if(data.isSuccess){
                      //댓글이 있는 곳에 삭제된 댓글입니다를 출력해 준다. 
-                     document.querySelector("#reli"+num).innerText="삭제된 댓글입니다.";
+                     document.querySelector("#reli"+comment_idx).innerText="삭제된 댓글입니다.";
                   }
                });
             }
@@ -475,9 +475,9 @@
             }
             
             //click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
-            const num=this.getAttribute("data-num"); //댓글의 글번호
+            const comment_idx=this.getAttribute("data-num"); //댓글의 글번호
             
-            const form=document.querySelector("#reForm"+num);
+            const form=document.querySelector("#reForm"+comment_idx);
             
             //현재 문자열을 읽어온다 ( "답글" or "취소" )
             let current = this.innerText;
@@ -526,10 +526,10 @@
                      특정문서의 참조값.querySelector() 는 해당 문서 객체의 자손 요소 중에서
                      특정 요소의 참조값을 찾는 기능
                   */
-                  const num=form.querySelector("input[name=comment_idx]").value;
-                  const content=form.querySelector("textarea[name=comment_content]").value;
+                  const comment_idx=form.querySelector("input[name=comment_idx]").value;
+                  const comment_content=form.querySelector("textarea[name=comment_content]").value;
                   //수정폼에 입력한 value 값을 pre 요소에도 출력하기 
-                  document.querySelector("#pre"+num).innerText=content;
+                  document.querySelector("#pre"+comment_idx).innerText=comment_content;
                   form.style.display="none";
                }
             });
