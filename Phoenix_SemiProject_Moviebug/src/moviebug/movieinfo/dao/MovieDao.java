@@ -85,7 +85,7 @@ public class MovieDao {
          // 실행할 sql 문 작성
          
          String sql = "select result01.*,rownum from " + 
-               "(select movie_title_kr, movie_story, movie_genre,movie_image,movie_rating, movie_year, to_char(sysdate,'yyyymmdd') \"오늘날짜\"" + 
+               "(select movie_title_kr, substr(movie_story,1,140) movie_story, movie_genre,movie_image,movie_rating, movie_year, to_char(sysdate,'yyyymmdd') \"오늘날짜\"" + 
                " from movie_info where sysdate-30 <= movie_year order by movie_year desc) result01" + 
                " where rownum < 5" + 
                " order by movie_rating desc";
