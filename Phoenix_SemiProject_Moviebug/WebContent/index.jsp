@@ -69,6 +69,9 @@
             ></button>
           </div>
           
+          
+          <!-- ////////////////// -->
+          
           <div class="carousel-inner">
           
           <%for(int i = 0; i < NewMovieList.size(); i++) {
@@ -116,10 +119,10 @@
       	</div>
         <div class="row">
           <div class="col">
-            <div class="row row-cols-md-2 row-cols-sm-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4">
+            <div class="row">
         <!-- ****************************************** -->
               		 <%for(MovieDto dto: Top4List){ %>
-              		 <a href="#">
+              		 <a href="#" class="col-6 col-lg-3">
 		              <div class="col">
 		                <div class="card border-0">
 		                  <img
@@ -156,11 +159,11 @@
       	</div>
         <div class="row">
           <div class="col">
-            <div class="row row-cols-xs-2 row-cols-xxl-4">
+            <div class="row">
               
          <!-- ****************************************** -->
 	      <%for(int i = 0 ; i<4; i++){ %>
-	      		<a href="#">
+	      		<a href="#" class="col-6 col-lg-3">
 	              <div class="col">
 	                <div class="card border-0">
 	                  <img
@@ -255,6 +258,10 @@
       </div>
 
     </div>
+    <!-- import footer.jsp -->
       <jsp:include page="include/footer.jsp"></jsp:include>
+      
+      <!-- import navbar.js -->
+      <script src="<%= request.getContextPath()%>/js/navbar.js"></script>
   </body>
 </html>
