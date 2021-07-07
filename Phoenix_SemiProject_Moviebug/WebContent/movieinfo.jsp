@@ -233,17 +233,9 @@
 	  				<label class="btn btn-outline-secondary" for="btnFour">유저평점</label>
 				</div>
 				
-				<div class="mt-3" id="movieInfo_wrapper">
-					
-				</div>
-				
-				
-				
+				<div class="mt-3" id="movieInfo_wrapper"></div>
 			</div>			
 		</div>
-		
-		
-		
 	</div>
 	
 	<!-- 댓글 목록 -->
@@ -329,7 +321,10 @@
       <textarea name="comment_content"><%if(!isLogin){%>댓글 작성을 위해 로그인이 필요 합니다.<%}%></textarea>
       <button type="submit">등록</button>
    </form>
-</div>
+   
+   <!-- footer  -->
+   <jsp:include page="include/footer.jsp"></jsp:include>
+
 <script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 <script>
    
@@ -393,7 +388,7 @@
             "pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다. 
          */
          ajaxPromise("movieinfo/ajax_comment_list.jsp","get",
-               "pageNum="+currentPage+"&movie_num=<%=movie_num%>")
+               "pageNum="+currentPage+"&movie_num="+<%=movie_num%>)
          .then(function(response){
             //json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다.
             return response.text();
@@ -538,9 +533,6 @@
 
    }
 </script>	
-	
-	<jsp:include page="include/footer.jsp"></jsp:include>
-	
 <script>
 	
 	function infoOne(){
