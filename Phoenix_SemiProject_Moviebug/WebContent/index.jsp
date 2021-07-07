@@ -77,7 +77,8 @@
           <%for(int i = 0; i < NewMovieList.size(); i++) {
           	MovieDto dto = NewMovieList.get(i);
           %>
-            <div class="carousel-item <%= i == 0 ?  "active" : ""%>">
+            <div class="carousel-item border-0 <%= i == 0 ?  "active" : ""%>">
+            	<div class="card border-0">
               <img src="<%=dto.getMovie_image() != null ? dto.getMovie_image():"images/bigdata.jpg" %>" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5><%=dto.getMovie_title_kr() %></h5>
@@ -85,6 +86,8 @@
                   <%= dto.getMovie_title_eng()%>
                 </p>
               </div>
+            	</div>
+              
             </div>
             <%} %>
             
