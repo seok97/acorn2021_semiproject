@@ -78,7 +78,7 @@
           	MovieDto dto = NewMovieList.get(i);
           %>
             <div class="carousel-item <%= i == 0 ?  "active" : ""%>">
-              <img src="images/bigdata.jpg" class="d-block w-100" alt="..." />
+              <img src="<%=dto.getMovie_image() != null ? dto.getMovie_image():"images/bigdata.jpg" %>" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h5><%=dto.getMovie_title_kr() %></h5>
                 <p>
