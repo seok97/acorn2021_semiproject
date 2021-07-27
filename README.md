@@ -9,3 +9,4 @@
 
 
 # 메인페이지
+![index.jsp][./images/localhost_8888_Phoenix_SemiProject_Moviebug_index.jsp.png]
