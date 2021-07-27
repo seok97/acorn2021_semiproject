@@ -9,4 +9,6 @@
 
 
 # 메인페이지
-![index.jsp][./images/localhost_8888_Phoenix_SemiProject_Moviebug_index.jsp.png]
+![index.jsp](./images/localhost_8888_Phoenix_SemiProject_Moviebug_index.jsp.png)
+
+# 사이드메뉴, 상단 네비게이션 바
