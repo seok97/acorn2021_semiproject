@@ -9,10 +9,13 @@ Apache 8.5
 
 # 실행
 프로젝트 import 후 facets 설정에서 에러가 난다면.
+
 ![image](https://user-images.githubusercontent.com/55433863/137112156-60fe5fdb-21f8-48ca-9c41-457e255fa5ec.png)
 아래 세번째 부분 클릭하여
+
 directory 경로를 /WebContent 입력해주고 ok
 그리고 java build path 에서 아래 두가지 라이브러리를 추가
+
 ![image](https://user-images.githubusercontent.com/55433863/137112353-63b4b70f-f28e-46e7-b879-e9def6a33827.png)
 
 
